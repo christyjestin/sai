@@ -1,3 +1,7 @@
+# Very large folders of images
+val_images/*
+train_images/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
