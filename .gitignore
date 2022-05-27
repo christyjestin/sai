@@ -1,6 +1,10 @@
 # Very large folders of images
-val_images/*
+test_images/*
 train_images/*
+
+# Fairly large folders of caption arrays
+caption_test_arrays/*
+caption_train_arrays/*
 
 # Giant glove embedding txt file
 glove.840B.300d.txt
