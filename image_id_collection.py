@@ -2,6 +2,9 @@ import json
 import pickle
 import sys
 
+# iterate through caption data to form a list of image ids and then
+# save the list via pickling; this is needed for training since the image ids
+# aren't a contiguous set of integers
 def main(train_file, test_file):
     with open(train_file, mode = 'r') as f:
         train_data = json.load(f)

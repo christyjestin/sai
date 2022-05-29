@@ -24,16 +24,16 @@ def process_caption_data(json_file):
 
 # process captions to calculate inverse frequencies
 def calc_inv_frequencies(captions_dict):
-    frequencies = defaultdict(lambda: 0)
+    count = defaultdict(lambda: 0)
     total_count = 0
     for id in captions_dict:
         for caption in captions_dict[id]:
             for word in caption.split():
-                frequencies[word] += 1
+                count[word] += 1
                 total_count += 1
     inv_frequencies = dict()
-    for word in frequencies:
-        inv_frequencies[word] = total_count / frequencies[word]
+    for word in count:
+        inv_frequencies[word] = total_count / count[word]
     return inv_frequencies
 
 # represent captions as arrays using glove embeddings and inverse frequencies
@@ -49,6 +49,7 @@ def write_captions_array(captions_dict, inv_frequencies, array_dir):
             with open(f"{array_dir}/{id}_{i}.npy", mode = "wb") as f:
                 np.save(f, np.array(seq))
 
+# process json files and write caption arrays using inverse frequency and glove embedding of each word
 def main(train_file, test_file, train_array_dir, test_array_dir):
     train_dict = process_caption_data(train_file)
     test_dict = process_caption_data(test_file)
